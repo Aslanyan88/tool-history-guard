@@ -1,19 +1,19 @@
 {
   "name": "tool-history-guard",
   "version": "0.1.1",
-  "description": "Tiny validator and safe fixer for AI agent tool-call history.",
+  "description": "Tiny preflight validator and safe fixer for AI agent message history.",
   "license": "MIT",
   "author": {
     "name": "Arman Aslanyan",
     "url": "https://www.linkedin.com/in/arman-aslanyan/"
   },
   "type": "commonjs",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/src/index.d.ts",
-      "require": "./dist/src/index.js"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
     }
   },
   "repository": {
@@ -25,7 +25,7 @@
     "url": "https://github.com/Aslanyan88/tool-history-guard/issues"
   },
   "files": [
-    "dist/src",
+    "dist",
     "README.md",
     "LICENSE"
   ],
@@ -42,8 +42,9 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "npm run build && node --test \"dist/tests/**/*.test.js\"",
-    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\""
+    "build:tests": "tsc -p tsconfig.tests.json",
+    "test": "npm run build && npm run build:tests && node --test \"dist-tests/tests/**/*.test.js\"",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true }); require('fs').rmSync('dist-tests', { recursive: true, force: true })\""
   },
   "devDependencies": {
     "@types/node": "^22.15.3",

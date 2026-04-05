@@ -1,6 +1,6 @@
 # tool-history-guard
 
-`tool-history-guard` is a tiny TypeScript library that validates and safely repairs broken AI tool-call history before you send it to a model API.
+`tool-history-guard` is a tiny preflight validator and safe fixer for AI agent message history before model API calls.
 
 This library is built for a common failure mode in agent systems: retries, resume flows, interrupts, and bad message assembly can leave tool-call and tool-result messages out of sync. The result is often a hard API error. This package gives you a focused preflight check without pulling in an agent framework.
 
